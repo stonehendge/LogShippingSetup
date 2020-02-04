@@ -36,9 +36,7 @@ DECLARE db_cursor CURSOR FOR
 SELECT [database],backup_directory, backup_share, 
 backup_destination_directory, start_time_offset
 FROM @DBList
---FROM [SQL-MNG2014\SQLMNG].[ManagementDBA].[dbo].LSDBList
---where [database] not in ('_ADMIN','Abakan','Arhangelsk')
---where [database]  in ('Arhangelsk')
+
 
 OPEN db_cursor
 
