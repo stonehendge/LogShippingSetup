@@ -58,8 +58,7 @@ BEGIN
          [filename])as fileonly
     FROM 
     SYS.Databases S
-    --INNER JOIN [SQL-MNG2014\SQLMNG].[ManagementDBA].[dbo].LSDBList LDB
-    --ON S.[name] = LDB.[database]
+
     INNER JOIN sys.sysaltfiles SF
     ON S.[database_id] = SF.[dbid]
     WHERE  SF.groupid <>0 and SF.dbid = @dbid
@@ -120,11 +119,7 @@ BEGIN
     -- Add NORECOVERY
     SET @sqlrestore = @sqlrestore + ',NORECOVERY; '
 
-    -- output restore script
-    --print '-- Database: ' + @dbname
-    --SELECT @sqlrestore
-	--EXEC sp_executesql @sqlrestore
-	--SELECT @sqlrestore
+
 
 	INSERT INTO @RestoreCmd(cmd_restore) VALUES (@sqlrestore)
 
